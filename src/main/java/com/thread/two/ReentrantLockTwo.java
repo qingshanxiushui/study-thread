@@ -8,18 +8,20 @@ public class ReentrantLockTwo {
     private  static ReentrantLock lock = new ReentrantLock();
     public static void main(String[] args) throws InterruptedException {
          Thread t1 = new Thread(()->{
-             try{
-                 //如果没有竞争那么此方法就会获取lock对象锁
-                 //如果有竞争就进入阻塞队列,可以被其它线程用interrupt方法打断
-                 System.out.println("尝试获取锁");
-                 lock.lockInterruptibly();
-                 /*System.out.println("尝试获取锁");
-                 lock.lock();*/
-             }catch (Exception e) {
-                 e.printStackTrace();
-                 System.out.println("没有获得锁,返回");
-                 return;
-             }
+//             try{
+//                 //如果没有竞争那么此方法就会获取lock对象锁
+//                 //如果有竞争就进入阻塞队列,可以被其它线程用interrupt方法打断
+//                 System.out.println("尝试获取锁");
+//                 lock.lockInterruptibly();
+//             }catch (Exception e) {
+//                 e.printStackTrace();
+//                 System.out.println("没有获得锁,返回");
+//                 return;
+//             }
+
+             System.out.println("尝试获取锁");
+             lock.lock();
+
              try{
                  System.out.println("获取到锁");
              }finally {
